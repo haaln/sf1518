@@ -31,21 +31,33 @@ E(1) = 0;
 V(1) = 1e2;
 LC(1) = 1000*(1-tau)+R(1)+L(1)+E(1);
 
-%euler-forward algorithm
+% %euler-forward algorithm
+% for i = 1:length(X)-1
+%     %y1 --start value
+%     Y1 = [ R(i); L(i); E(i); V(i) ];
+%     %f(t,y(t))
+%     Yprime = [ gamma*tau - my*R(i) - Beta*R(i)*V(i); rho*Beta*R(i)*V(i) - my*L(i) - alpha*L(i) ; (1-rho)*Beta*R(i)*V(i) + alpha*L(i) - delta*E(i) ; not_pi*E(i) - sigma*V(i)  ];
+%     %euler one step
+%     Y2 = Y1 + Yprime*h; 
+%     %assign new start variables
+%     R(i+1) = Y2(1);
+%     L(i+1) = Y2(2);
+%     E(i+1) = Y2(3);
+%     V(i+1) = Y2(4);
+%     LC(i+1) = 1000*(1-tau)+R(i)+L(i)+E(i);
+% end
+
+
+% %euler-backward algorithm
 for i = 1:length(X)-1
-    %y1 --start value
-    Y1 = [ R(i); L(i); E(i); V(i) ];
-    %f(t,y(t))
-    Yprime = [ gamma*tau - my*R(i) - Beta*R(i)*V(i); rho*Beta*R(i)*V(i) - my*L(i) - alpha*L(i) ; (1-rho)*Beta*R(i)*V(i) + alpha*L(i) - delta*E(i) ; not_pi*E(i) - sigma*V(i)  ];
-    %euler one step
-    Y2 = Y1 + Yprime*h; 
-    %assign new start variables
+    Y2 = [ (R(i)+h*tau*gamma)/(1+h*my+(h*Beta)*V(i)); (L(i)+h*Beta*rho*R(i)*V(i))/(1+my*h+h*alpha); (E(i)+h*Beta*R(i)*V(i)-h*Beta*rho*R(i)*V(i)+alpha*L(i)*h)/(1+delta*h); (V(i)+not_pi*E(i)*h)/(1+sigma*h)];
     R(i+1) = Y2(1);
     L(i+1) = Y2(2);
     E(i+1) = Y2(3);
     V(i+1) = Y2(4);
     LC(i+1) = 1000*(1-tau)+R(i)+L(i)+E(i);
 end
+
 
 %plot1
 t = tiledlayout(1,2);
