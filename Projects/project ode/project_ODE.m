@@ -88,12 +88,13 @@ axis(ax2, [0 120 1e-1 1e2])
 yticklabels({'0','0.1','10','100'})
 xlabel('Days from infection')
 
-od45 = @(t,y) [gamma*tau - my*y(1) - Beta*y(1)*y(4); rho*Beta*y(1)*y(4) - my*y(2) - alpha*y(2) ; (1-rho)*Beta*y(1)*y(4) + alpha*y(2) - delta*y(3) ; not_pi*y(3) - sigma*y(4)];
-[t1,xa1] = ode45(od45,[0 120],[200 0 0 100]);
+%function
+f = @(t,y) [gamma*tau - my*y(1) - Beta*y(1)*y(4); rho*Beta*y(1)*y(4) - my*y(2) - alpha*y(2) ; (1-rho)*Beta*y(1)*y(4) + alpha*y(2) - delta*y(3) ; not_pi*y(3) - sigma*y(4)];
+%ode45 explicit
+[t1,xa1] = ode45(f,[0 120],[200 0 0 100]);
 ode45_partitions = length(t1)
-
-od23 = @(t,y) [gamma*tau - my*y(1) - Beta*y(1)*y(4); rho*Beta*y(1)*y(4) - my*y(2) - alpha*y(2) ; (1-rho)*Beta*y(1)*y(4) + alpha*y(2) - delta*y(3) ; not_pi*y(3) - sigma*y(4)];
-[t2,xa2] = ode23(od45,[0 120],[200 0 0 100]);
+%ode23 implicit
+[t2,xa2] = ode23(f,[0 120],[200 0 0 100]);
 ode23_partitions = length(t2)
 
-% 0.5 gigabyte program  l m f a o
+% 100 gigabyte program  l m f a o
