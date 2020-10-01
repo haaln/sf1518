@@ -12,7 +12,7 @@ delta = 0.33;
 not_pi = 100;
 
 %step length
-h = 1e-5;
+h = 1e-3;
 time = 0;
 X = 0:h:120;
 
@@ -60,33 +60,57 @@ end
 
 
 %plot1
+
 t = tiledlayout(1,2);
+colororder({'k','k'})
 yyaxis left
 ax1 = nexttile([2 1]);
-plot(ax1,X,LC)
-ylabel('CD4 lymphocytes')
-axis(ax1, [0 120 0 1200])
+plot(ax1,X,LC,'k')
+text(-7,1150,'A','FontSize',15,'FontWeight','bold')
+text(32,890,'CD4 lymphocytes','FontSize',13)
+ylabel('CD4 lymphocytes','FontWeight','bold')
+axis(ax1, [-10 120 0 1200])
 % xticklabels({'0','30','60','90','120'})
 yyaxis right
-semilogy(ax1,X,V)
-ylabel('Free virions')
-axis(ax1, [0 120 1e-1 1e4])
+semilogy(ax1,X,V,'k')
+text(20,10,'Cell-free virus','FontSize',13)
+ylabel('Free virions V','color','k','FontWeight','bold')
+axis(ax1, [-10 120 1e-1 1e4])
 yticklabels({'0','0.1','10','100','1000','10,000'})
-xlabel('Days from infection')
+xlabel('Days from infection','FontWeight','bold')
 
 %plot2
 ax2 = nexttile([2 1]);
+colororder({'k','k'})
 yyaxis left
 axis(ax2, [0 120 0 250])
-plot(X,R)
-ylabel('R')
+% yticklabels({'0','50','100','150','200','250'})
+% xticklabels({'0','30','60','90','120'})
+plot(X,R,'k')
+text(-7,240,'B','FontSize',15,'FontWeight','bold')
+text(58,20,'R','FontAngle','italic','FontSize',13)
+ax.YColor = 'k';
+ylabel('R','color','k','FontWeight','bold','FontAngle','italic')
 axis(ax2, [0 120 0 250])
 yyaxis right
-semilogy(X,L,X,E)
-ylabel('L and E')
-axis(ax2, [0 120 1e-1 1e2])
-yticklabels({'0','0.1','10','100'})
-xlabel('Days from infection')
+semilogy(X,L,'k--',X,E,'k-')
+text(58,5,'L','FontAngle','italic','FontSize',13)
+text(58,1,'E','FontAngle','italic','FontSize',13)
+ylabel('L and E','color','k','FontWeight','bold')
+axis(ax2, [-10 120 1e-1 1e2])
+yticklabels({'0.1','1','10','100'})
+xlabel('Days from infection','FontWeight','bold')
+
+%graph size and position
+x0=550;
+y0=1050;
+width=850;
+height=450;
+set(gcf,'position',[x0,y0,width,height])
+
+%xticks are not set in increments of 30, from 0 to 120
+%ylabelticks for both semilogy graph are too small
+%ylabel for plot2 "L and E" do not have italic style for variables
 
 %function
 f = @(t,y) [gamma*tau - my*y(1) - Beta*y(1)*y(4); rho*Beta*y(1)*y(4) - my*y(2) - alpha*y(2) ; (1-rho)*Beta*y(1)*y(4) + alpha*y(2) - delta*y(3) ; not_pi*y(3) - sigma*y(4)];
@@ -97,4 +121,4 @@ ode45_partitions = length(t1)
 [t2,xa2] = ode23(f,[0 120],[200 0 0 100]);
 ode23_partitions = length(t2)
 
-% 100 gigabyte program  l m f a o
+%you have not calculated the error to be below 1e-5
