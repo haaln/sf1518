@@ -1,6 +1,38 @@
 clear, clc, close('all')
+%
+%
+%  differences from the original Figure in the report:
+%
+%  # x-axis are not set in increments of 30, from 0 to 120
+%
+%  # y-axes 'ticks' for both semilogy graph are too small
+%
+%  # ylabel for plot2 "L and E" do not have cursive style for variables
+%
+%
+%                       caution:
+%
+%          this program takes about 2GB of RAM 
+%          and takes about 30 seconds to execute 
+%                    if h == 1e-5
+%
+%          please make sure you have enough memory
+%                otherwise, decrease h
 
-%%%%% CONSTANTS
+                    % Step-length
+                       h = 1e-5;
+
+t = 0:h:120;
+N = length(t);
+
+% Memory allocation
+R = zeros(1,N);
+L = zeros(1,N);
+E = zeros(1,N);
+V = zeros(1,N);
+LC = zeros(1,N);
+
+%%%%% Constants
 Gamma = 1.36;
 My = 1.36e-3;
 Tau = 0.2;
@@ -11,30 +43,17 @@ Sigma = 2;
 Delta = 0.33;
 Pi = 100;
 
-%step length
-h = 1e-3;
-time = 0;
-t = 0:h:120;
-N = length(t);
-
-%mem alloc
-Y1 = zeros(1,N);
-Y2 = zeros(1,N);
-R = zeros(1,N);
-L = zeros(1,N);
-E = zeros(1,N);
-V = zeros(1,N);
-LC = zeros(1,N);
-
-%%%%% STARTING VALUES
+%%%%% Initial value conditions
 R(1) = 2e2;
 L(1) = 0;
 E(1) = 0;
 V(1) = 100;
 LC(1) = 1000*(1-Tau)+R(1)+L(1)+E(1);
 
-% %euler-forward algorithm
-% for i = 1:(N-1)
+% % %euler-forward algorithm
+% Y1 = zeros(1,N);
+% Y2 = zeros(1,N);
+% % for i = 1:(N-1)
 %     %y1 --start value
 %     Y1 = [ R(i); L(i); E(i); V(i) ];
 %     %f(t,y(t))
@@ -51,6 +70,7 @@ LC(1) = 1000*(1-Tau)+R(1)+L(1)+E(1);
 
 
 % euler-backward algorithm
+% Y2 = zeros(1,N);
 % for i = 1:(N-1)
 %     Y2 = [ (R(i)+h*Tau*Gamma)/(1+h*My+(h*Beta)*V(i)); (L(i)+h*Beta*Rho*R(i)*V(i))/(1+My*h+h*Alpha); (E(i)+h*Beta*R(i)*V(i)-h*Beta*Rho*R(i)*V(i)+Alpha*L(i)*h)/(1+Delta*h); (V(i)+Pi*E(i)*h)/(1+Sigma*h)];
 %     R(i+1) = Y2(1);
@@ -60,7 +80,7 @@ LC(1) = 1000*(1-Tau)+R(1)+L(1)+E(1);
 %     LC(i+1) = 1000*(1-Tau)+R(i)+L(i)+E(i);
 % end
 
-% % runge-kutta 4 algorithm
+% runge-kutta 4 algorithm
 sR = zeros(1,4); 
 sL = zeros(1,4);  
 sE = zeros(1,4); 
@@ -104,7 +124,6 @@ end
 
 
 %plot1
-
 tiledlayout(1,2);
 colororder({'k','k'})
 yyaxis left
@@ -149,10 +168,6 @@ width=850;
 height=450;
 set(gcf,'position',[x0,y0,width,height])
 
-%xticks are not set in increments of 30, from 0 to 120
-%ylabelticks for both semilogy graph are too small
-%ylabel for plot2 "L and E" do not have cursive writing style for variables
-
 %function
 f = @(t,y) [Gamma*Tau - My*y(1) - Beta*y(1)*y(4); Rho*Beta*y(1)*y(4) - My*y(2) - Alpha*y(2) ; (1-Rho)*Beta*y(1)*y(4) + Alpha*y(2) - Delta*y(3) ; Pi*y(3) - Sigma*y(4)];
 %ode45 explicit
@@ -161,8 +176,3 @@ ode45_partitions = length(t1)
 %ode23 implicit
 [t2,xa2] = ode23(f,[0 120],[200 0 0 100]);
 ode23_partitions = length(t2)
-
-% error_ode45 = abs(L(end)-xa1(end,2))
-% error_ode23 = abs(L(end)-xa2(end,2))
-% you have not calculated the error to be below 1e-5
-
