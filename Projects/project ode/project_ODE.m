@@ -20,7 +20,7 @@ clear, clc, close('all')
 %                otherwise, decrease h
 
                     % Step-length
-                       h = 1e-5;
+                       h = 1e-4;
 
 t = 0:h:120;
 N = length(t);
@@ -47,7 +47,7 @@ Pi = 100;
 R(1) = 2e2;
 L(1) = 0;
 E(1) = 0;
-V(1) = 100;
+V(1) = 4e-7;
 LC(1) = 1000*(1-Tau)+R(1)+L(1)+E(1);
 
 % % %euler-forward algorithm
@@ -93,7 +93,7 @@ dL = @(R,L,E,V) Rho*Beta*R*V - My*L - Alpha*L;
 dE = @(R,L,E,V) (1-Rho)*Beta*R*V + Alpha*L - Delta*E;
 dV = @(R,L,E,V) Pi*E - Sigma*V;
 
-for i = 1:(N-1)        
+for i = 1:(N-1)
     sR(1) = dR( R(i), L(i), E(i), V(i));
     sL(1) = dL( R(i), L(i), E(i), V(i));
     sE(1) = dE( R(i), L(i), E(i), V(i));
@@ -129,15 +129,15 @@ colororder({'k','k'})
 yyaxis left
 ax1 = nexttile([2 1]);
 plot(ax1,t,LC,'k')
-text(-7,1150,'A','FontSize',15,'FontWeight','bold')
-text(32,890,'CD4 lymphocytes','FontSize',13)
+text(3,1150,'A','FontSize',15,'FontWeight','bold')
+text(48,890,'CD4 lymphocytes','FontSize',13)
 ylabel('CD4 lymphocytes','FontWeight','bold')
-axis(ax1, [-10 120 0 1200])
+axis(ax1, [0 120 0 1200])
 yyaxis right
 semilogy(ax1,t,V,'k')
-text(20,10,'Cell-free virus','FontSize',13)
+text(35,15,'Cell-free virus','FontSize',13)
 ylabel('Free virions V','color','k','FontWeight','bold')
-axis(ax1, [-10 120 1e-1 1e4])
+axis(ax1, [0 120 1e-1 1e4])
 yticklabels({'0','0.1','10','100','1000','10,000'})
 xlabel('Days from infection','FontWeight','bold')
 
@@ -147,17 +147,17 @@ colororder({'k','k'})
 yyaxis left
 axis(ax2, [0 120 0 250])
 plot(t,R,'k')
-text(-7,240,'B','FontSize',15,'FontWeight','bold')
-text(58,20,'R','FontAngle','italic','FontSize',13)
+text(3,240,'B','FontSize',15,'FontWeight','bold')
+text(70,22,'R','FontAngle','italic','FontSize',13)
 ax.YColor = 'k';
 ylabel('R','color','k','FontWeight','bold','FontAngle','italic')
 axis(ax2, [0 120 0 250])
 yyaxis right
 semilogy(t,L,'k--',t,E,'k-')
-text(58,5,'L','FontAngle','italic','FontSize',13)
-text(58,1,'E','FontAngle','italic','FontSize',13)
+text(70,8,'L','FontAngle','italic','FontSize',13)
+text(70,1,'E','FontAngle','italic','FontSize',13)
 ylabel('L and E','color','k','FontWeight','bold')
-axis(ax2, [-10 120 1e-1 1e2])
+axis(ax2, [0 120 1e-1 1e2])
 yticklabels({'0.1','1','10','100'})
 xlabel('Days from infection','FontWeight','bold')
 
