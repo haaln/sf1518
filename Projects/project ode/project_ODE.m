@@ -20,7 +20,7 @@ clear, clc, close('all')
 %                otherwise, decrease h
 
                     % Step-length
-                       h = 1e-4;
+                       h = 1e-2;
 
 t = 0:h:120;
 N = length(t);
@@ -170,9 +170,12 @@ set(gcf,'position',[x0,y0,width,height])
 
 %function
 f = @(t,y) [Gamma*Tau - My*y(1) - Beta*y(1)*y(4); Rho*Beta*y(1)*y(4) - My*y(2) - Alpha*y(2) ; (1-Rho)*Beta*y(1)*y(4) + Alpha*y(2) - Delta*y(3) ; Pi*y(3) - Sigma*y(4)];
+%setting tolerance value
+options = odeset('RelTol',1e-5);
+
 %ode45 explicit
-[t1,xa1] = ode45(f,[0 120],[200 0 0 100]);
+[t1,xa1] = ode45(f,[0 120],[200 0 0 100],options);
 ode45_partitions = length(t1)
 %ode23 implicit
-[t2,xa2] = ode23(f,[0 120],[200 0 0 100]);
+[t2,xa2] = ode23(f,[0 120],[200 0 0 100],options);
 ode23_partitions = length(t2)
