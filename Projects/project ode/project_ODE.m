@@ -138,7 +138,7 @@ semilogy(ax1,t,V,'k')
 text(35,15,'Cell-free virus','FontSize',13)
 ylabel('Free virions V','color','k','FontWeight','bold')
 axis(ax1, [0 120 1e-1 1e4])
-yticklabels({'0','0.1','10','100','1000','10,000'})
+yticklabels({'0.1','1','10','100','1000','10,000'})
 xlabel('Days from infection','FontWeight','bold')
 
 %plot2
@@ -174,8 +174,10 @@ f = @(t,y) [Gamma*Tau - My*y(1) - Beta*y(1)*y(4); Rho*Beta*y(1)*y(4) - My*y(2) -
 options = odeset('RelTol',1e-5);
 
 %ode45 explicit
-[t1,xa1] = ode45(f,[0 120],[200 0 0 100],options);
+[t1,xa1] = ode45(f,[0 120],[200 0 0 4e-7],options);
 ode45_partitions = length(t1)
 %ode23 implicit
-[t2,xa2] = ode23(f,[0 120],[200 0 0 100],options);
+[t2,xa2] = ode23(f,[0 120],[200 0 0 4e-7],options);
 ode23_partitions = length(t2)
+
+LC_ode = 1000*(1-Tau)+xa1(end,1)+xa1(end,2)+xa1(end,3);
