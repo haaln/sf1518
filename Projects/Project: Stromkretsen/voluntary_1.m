@@ -32,29 +32,30 @@ dI = @(t,y) [y(2); 2*y(1)/(1+y(1)^2)*y(2)^2-y(1)*((1+y(1)^2)/(L_0*C))];
 b = 2150;
 a = 2140;
 i = 1;
-while(true)
-%     computation of ODEs
-    c = (a+b)/2;
-    [~, Ia] = rk4(dI, t_period, N, [0; a]);
-    [~, Ic] = rk4(dI, t_period, N, [0; c]);
-    Ira = 10-max(Ia(1,:));
-    Irc = 10-max(Ic(1,:));
-    if Ira*Irc > 0
-        a = c;
-    else
-        b = c;
-    end
-    U_max(i) = c;
-    if abs((b-a)/2) < 0.5e-12
-        break
-    end
-    i = i + 1;
-end
+% while(true)
+% %     computation of ODEs
+%     c = (a+b)/2;
+%     [~, Ia] = rk4(dI, t_period, N, [0; a]);
+%     [~, Ic] = rk4(dI, t_period, N, [0; c]);
+%     Ira = 10-max(Ia(1,:));
+%     Irc = 10-max(Ic(1,:));
+%     if Ira*Irc > 0
+%         a = c;
+%     else
+%         b = c;
+%     end
+%     U_max(i) = c;
+%     if abs((b-a)/2) < 0.5e-12
+%         break
+%     end
+%     i = i + 1;
+% end
 %plotting at I_max = 10
+U_max = 2.148283155648865e+03;
 [ta, Iu] = rk4(dI, [0 0.01], N, [0; U_max(end)]);
 plot(ta,Iu(1,:))
 grid on
-title(sprintf('Current at U_0 = %0.i',U_0))
+title(sprintf('Current at U_0 = %0.f V',U_max(end)))
 xlabel('Time [seconds]')
 ylabel('Current [Ampere]')
 ylim([-13 13])
@@ -86,12 +87,11 @@ for i = 1:20
     results(i, 1) = L_0;
 end
 
-
 plot(results(:,1),results(:,2))
-title(sprintf('relationship between U*_0 and L_0 = %0.i',U_0))
+title(sprintf('Relationship between U*_0 and L_0'))
 xlabel('L_0 [H]')
 ylabel('Power [Volt]')
-ylim([-13 13])
+ylim([150 3400])
 grid on
 
 

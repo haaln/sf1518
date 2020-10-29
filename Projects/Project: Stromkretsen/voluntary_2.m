@@ -38,7 +38,7 @@ for i = 1:length(U_0)
     plot(ax1,t_ode, I_ode(:,1), '-b', t_rk4, I_rk4(1,:), '-.r', t_ode, t_ode*0, 'k')
     grid on
     legend('ode45', 'rk4', 'Location','best')
-    title(sprintf('Current at U_0 = %0.i',U_0(i)))
+    title(sprintf('Current at U_0 = %0.i V',U_0(i)))
     xlabel('Time [seconds]')
     ylabel('Current [Ampere]')
     
@@ -47,7 +47,7 @@ for i = 1:length(U_0)
     plot(ax2,t_ode, I_ode(:,2), '-b', t_rk4, I_rk4(2,:), '-.r', t_ode, t_ode*0, 'k')
     grid on
     legend('ode45', 'rk4', 'Location','best')
-    title(sprintf('Voltage at U_0 = %0.i',U_0(i)))
+    title(sprintf('Voltage at U_0 = %0.i V',U_0(i)))
     xlabel('Time [seconds]')
     ylabel('Voltage [V]')
 

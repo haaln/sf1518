@@ -39,13 +39,13 @@ while(true)
         [I_rk4_max, I_rk4_t] = max(I_rk4(1,1:(end/5)));  
         %store value
         I_MAX(j,i) = I_rk4_max;
-        T_PERIOD(j,i) = 4*I_rk4_t*t_period(2)/N;
+        T_PERIOD(j,i) = 4*I_rk4_t*t_period(2)/N
     end
     
     j = j + 1;
     N = N * 2;
     
-    if N >= 1e6
+    if N >= 1e8
         break
     end
 end
