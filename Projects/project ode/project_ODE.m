@@ -20,7 +20,7 @@ clear, clc, close('all')
 %                otherwise, decrease h
 
                     % Step-length
-                       h = 1e-2;
+                       h = 1e-1;
 
 t = 0:h:120;
 N = length(t);
@@ -114,11 +114,11 @@ for i = 1:(N-1)
     sE(4) = dE( R(i) + h*sR(3), L(i) + h*sL(3), E(i) + h*sE(3),  V(i) + h*sV(3));
     sV(4) = dE( R(i) + h*sR(3), L(i) + h*sL(3), E(i) + h*sE(3),  V(i) + h*sV(3));
 
-    R(i+1) = R(i) + (h/6)*sum(rk4.*sR);       
+    R(i+1) = R(i) + (h/6)*sum(rk4.*sR);    
     L(i+1) = L(i) + (h/6)*sum(rk4.*sL);       
     E(i+1) = E(i) + (h/6)*sum(rk4.*sE);
     V(i+1) = V(i) + (h/6)*sum(rk4.*sV);
-    LC(i+1) = 1000*(1-Tau)+R(i)+L(i)+E(i);   
+    LC(i+1) = 1000*(1-Tau)+R(i)+L(i)+E(i);
 end 
 
 

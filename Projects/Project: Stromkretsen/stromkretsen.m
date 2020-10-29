@@ -1,4 +1,3 @@
-cd ~/Documents/college/'[Numerical Analysis]'/'Numerical Methods'/Projects/'Project: Stromkretsen'/
 clear, clc, close all
 format long
 
@@ -34,9 +33,8 @@ for i = 1:length(U_0)
     %computation of ODEs
     [t_ode, I_ode] = ode45(dI, t_period, I0, options);
     [t_rk4, I_rk4] = rk4(dI, t_period, N, I_0(:,i));
-    %computation of dEdt to prove its constant
+    %computation of E(t) to prove its constant
     dEdt = C*(L_0./(1+I_rk4(1,:).^2).*I_rk4(2,:)).^2+L_0*log(1+I_rk4(1,:).^2);
-%   dEdt = (2.*I_rk4(1,:)*(I_rk4(
     
     %plotting figure
     figure(i)
@@ -52,7 +50,7 @@ for i = 1:length(U_0)
     ax2 = nexttile([2 6]);
     plot(ax2, t_rk4, dEdt)
     ylabel('Energy [Wh]')
-    title(sprintf('Energy at U_0 = %0.i',U_0(i)))
+    title(sprintf('E at U_0 = %0.i',U_0(i)))
     xlabel('Time [seconds]')
     axis manual
     axis(ax2, [0 0.1 0 0.01])
@@ -70,56 +68,53 @@ N = 1e6;
 period_index = [ ceil(N/(10^8/31190145)) , ceil(N/(10^8/26085965)),  ceil(N/(10^8/15470926)) ];
 period = [ 0.006238029174805   0.005217193603516   0.003094185791016 ];
 
-% for i = 1:length(U_0)
-%     
-%     %computation of ODE
-%     [t, I] = rk4(dI, t_period, N, I_0(:,i));
-%     I = I';
-%     I = I(:,1);
-%     t = t';
-%     
-%     %calculation of omega
-%     w = 2 * pi / period(i);
-%     
-%     %conversion of h to match period
-%     t_p = t(1:period_index(i));
-%     TN = period_index(i);
-%     h = period(i) / TN;
-%     
-%     indexVec = 1:TN;
-%     x = indexVec;
-%     
-%     for k = 1:14
-%     sine_0 = sin(k*w.*t(x(1)));
-%     sine_n = sin(k*w.*t(x(end)));
-%     sine   = sin(k*w.*t(x(2:end-1))); 
-%     a(k) = (2/period(i)) * (h/2) * sum(I(x(1))*sine_0 + ...
-%                                        I(end)*sine_n + ...
-%                                        I(x(2:end-1)).*sine*2);
-%     end
-%     ak = a';
-%     I_fourier = @(q) ak(1)*sin(1*w*q) + ak(2)*sin(2*w*q) + ak(3)*sin(3*w*q) + ak(4)*sin(4*w*q) + ak(5)*sin(5*w*q) + ak(6)*sin(6*w*q) + ak(7)*sin(7*w*q) + ak(8)*sin(8*w*q) + ak(9)*sin(9*w*q) + ak(10)*sin(10*w*q) + ak(11)*sin(11*w*q) + ak(12)*sin(12*w*q) + ak(13)*sin(13*w*q) + ak(14)*sin(14*w*q);
-%     I_fourier3 = @(q) ak(1)*sin(1*w*q) + ak(2)*sin(2*w*q) + ak(3)*sin(3*w*q);
-%     I_fourier_val = I_fourier(t);
-%     I_fourier_val3 = I_fourier3(t);
-% 
-%     %plot
-%     figure(i+3)   
-%     plot(t,I(:,1), '-.r',t,I_fourier_val,'b')
-%     legend('rk4','fourier')
-%     title(sprintf('Fourier vs Runge U_0 = %0.i',U_0(i)))
-%     xlabel('Time [seconds]')
-%     ylabel('Current [Ampere]')
-%     grid on
-%     figure(i+6)
-%     plot(t,I_fourier_val3,'m--',t,I_fourier_val,'b')
-%     legend('fourier with 3 a_k','fourier with 14 a_k')
-%     title(sprintf('Fourier U_0 = %0.i',U_0(i)))
-%     xlabel('Time [seconds]')
-%     ylabel('Current [Ampere]')
-%     grid on
-%     
-% end
+for i = 1:length(U_0)
+    
+    %computation of ODE
+    [t, I] = rk4(dI, t_period, N, I_0(:,i));
+    I = I';
+    I = I(:,1);
+    t = t';
+    
+    %calculation of omega
+    w = 2 * pi / period(i);
+    
+    %conversion of h to match period
+    t_p = t(1:period_index(i));
+    TN = period_index(i);
+    h = period(i) / TN;
+    x = 1:TN;
+    
+    for k = 1:14
+    sine_0 = sin(k*w.*t(x(1)));
+    sine_n = sin(k*w.*t(x(end)));
+    sine   = sin(k*w.*t(x(2:end-1))); 
+    a(k) = (2/period(i)) * (h/2) * sum(I(x(1))*sine_0  ...
+                                 +     I(end)*sine_n  ...
+                                 +     I(x(2:end-1)).*sine*2);
+    end
+    ak = a';
+    I_fourier = @(t) ak(1)*sin(1*w*t) + ak(2)*sin(2*w*t) + ak(3)*sin(3*w*t) + ak(4)*sin(4*w*t) + ak(5)*sin(5*w*t) + ak(6)*sin(6*w*t) + ak(7)*sin(7*w*t) + ak(8)*sin(8*w*t) + ak(9)*sin(9*w*t) + ak(10)*sin(10*w*t) + ak(11)*sin(11*w*t) + ak(12)*sin(12*w*t) + ak(13)*sin(13*w*t) + ak(14)*sin(14*w*t);
+    I_fourier3 = @(t) ak(1)*sin(1*w*t) + ak(2)*sin(2*w*t) + ak(3)*sin(3*w*t);
+    I_fourier_val = I_fourier(t);
+    I_fourier_val3 = I_fourier3(t);
+
+    %plot
+    figure(i+3)   
+    plot(t,I(:,1), '-.r',t,I_fourier_val,'b')
+    legend('rk4','fourier')
+    title(sprintf('Fourier vs Runge U_0 = %0.i',U_0(i)))
+    xlabel('Time [seconds]')
+    ylabel('Current [Ampere]')
+    grid on
+    figure(i+6)
+    plot(t,I_fourier_val3,'m--',t,I_fourier_val,'b')
+    legend('fourier with 3 a_k','fourier with 14 a_k')
+    title(sprintf('Fourier U_0 = %0.i',U_0(i)))
+    xlabel('Time [seconds]')
+    ylabel('Current [Ampere]')
+    grid on
+end
 
 %%%%%%%%%%%%% ~ LOCAL FUNCTIONS ~ %%%%%%%%%%%%%%
 function [t,y] = rk4(f, tspan, N, y0 )

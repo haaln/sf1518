@@ -1,4 +1,3 @@
-cd ~/Documents/college/'[Numerical Analysis]'/'Numerical Methods'/Projects/'Project: Stromkretsen'/
 clear, clc, close all
 format long
 
@@ -45,7 +44,7 @@ for i = 1:length(U_0)
     
     figure(i)
     ax2 = nexttile([3 6]);
-    plot(ax2,t_ode, I_ode(:,1), '-b', t_rk4, I_rk4(2,:), '-.r', t_ode, t_ode*0, 'k')
+    plot(ax2,t_ode, I_ode(:,2), '-b', t_rk4, I_rk4(2,:), '-.r', t_ode, t_ode*0, 'k')
     grid on
     legend('ode45', 'rk4', 'Location','best')
     title(sprintf('Voltage at U_0 = %0.i',U_0(i)))
@@ -58,6 +57,7 @@ end
 %%%%%%%%%%%%% ~ I_MAX + T_PERIOD ~ %%%%%%%%%%%%%%%
 N = 1e2;
 j = 1;
+warning('off')
 while(true)
     for i = 1:length(U_0)
         %computation of ODEs
@@ -66,7 +66,7 @@ while(true)
         [I_rk4_max, I_rk4_t] = max(I_rk4(1,1:(end/5)));  
         %store value
         I_MAX(j,i) = I_rk4_max;
-        T_PERIOD(j,i) = 4*I_rk4_t*0.01/N;
+        T_PERIOD(j,i) = 4*I_rk4_t*t_period(2)/N;
     end
     
     j = j + 1;
@@ -76,7 +76,15 @@ while(true)
         break
     end
 end
+warning('on')
 
+% absolute error estimation
+for k = 1:length(I_MAX)-1
+    for l=1:3 
+        t_error(k,l) = abs(T_PERIOD(k+1,l)-T_PERIOD(k,l));
+        I_error(k,l) = abs(I_MAX(k+1,l)-I_MAX(k,l));
+    end
+end
 
 
 %%%%%%%%%%%%% ~ LOCAL FUNCTIONS ~ %%%%%%%%%%%%%%

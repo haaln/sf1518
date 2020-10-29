@@ -30,7 +30,7 @@ BREAK_CONDITION = 20;
         TRAPEZOID_APPROXIMATION(ROUND) = ((h/2)*(Y(1)+Y(end)+2.*sum(Y(2:(end-1))))); % calculate approximation using trapezoid rule
         REAL_ERROR(ROUND) = abs(REAL_INTEGRAL - TRAPEZOID_APPROXIMATION(ROUND));
         STEP_LENGTH(ROUND) = h;
-        ROUND_V(ROUND) = ROUND;
+        ROUND_V(ROUND) = ROUND; % what the fuck lmfao
         N = 2*N;
         
         if ROUND > BREAK_CONDITION

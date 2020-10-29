@@ -1,5 +1,5 @@
 clear, clc, close all
-format long
+format shortg
 
 %%%%%%%%%%%%%%%%% ~ VARIABLES ~ %%%%%%%%%%%%%%%%%
 L_0        = 1;
@@ -27,43 +27,37 @@ T_PERIOD    = [];
 
 %%%%%%%%%% ~ System of first order ODE ~ %%%%%%%%
 dI = @(t,y) [y(2); 2*y(1)/(1+y(1)^2)*y(2)^2-y(1)*((1+y(1)^2)/(L_0*C))];
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% note that the error for I_max could be determined 
-% by computing the results for I_rk4_max for different N
-% and subtract h with h/2 to get an absolute error value
-% then plot how the error diminishes as h approaches zero
     
 %%%%%%%%% ~ CALCULATING THE PERIOD ~ %%%%%%%%%%
-% j = 1;
-% while(true)
-%     for i = 1:length(U_0)
-%         %computation of ODEs
-%         [t_rk4, I_rk4] = rk4(dI, t_period, N, I_0(:,i));
-%         %maximum amplitude of current, and its time (index)
-%         [I_rk4_max, I_rk4_t] = max(I_rk4(1,1:(end/5)));  
-%         %store value
-%         I_MAX(j,i) = I_rk4_max;
-%         T_PERIOD(j,i) = 4*I_rk4_t*0.01/N;
-%     end
-%     
-%     j = j + 1;
-%     N = N * 2;
-%     
-%     if N >= 1e6
-%         break
-%     end
-% end
+j = 1;
+warning('off')
+while(true)
+    for i = 1:length(U_0)
+        %computation of ODEs
+        [t_rk4, I_rk4] = rk4(dI, t_period, N, I_0(:,i));
+        %maximum amplitude of current, and its time (index)
+        [I_rk4_max, I_rk4_t] = max(I_rk4(1,1:(end/5)));  
+        %store value
+        I_MAX(j,i) = I_rk4_max;
+        T_PERIOD(j,i) = 4*I_rk4_t*t_period(2)/N;
+    end
+    
+    j = j + 1;
+    N = N * 2;
+    
+    if N >= 1e6
+        break
+    end
+end
+warning('on')
 
 % absolute error estimation
 for k = 1:length(I_MAX)-1
     for l=1:3 
-        error(k,l) = abs(I_MAX(k+1,l)-I_MAX(k,l));
+        t_error(k,l) = abs(T_PERIOD(k+1,l)-T_PERIOD(k,l));
+        I_error(k,l) = abs(I_MAX(k+1,l)-I_MAX(k,l));
     end
 end
-error
-% error2 = vertcat([1:length(error)]',error)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % method 2 : bisection method
 % the absolute error for this method is 1e-5 (OR IS IT 0.5e-5?)
