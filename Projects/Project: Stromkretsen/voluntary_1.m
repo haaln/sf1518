@@ -10,7 +10,7 @@ I_0        = [zeros(1,length(U_0));U_0./L_0];
 C          = 1e-6;
 N          = 1e6;
 t_period   = [0, 0.002];
-options    = odeset('RelTol',1e-12);
+options    = odeset('RelTol',1e-7);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%% ~ INITIALIZATION ~ %%%%%%%%%%%%%%%
@@ -59,7 +59,64 @@ i = 1;
 %     ylabel('Current [Ampere]')
 %     ylim([-13 13])
 
-%%%%%%%%%% ~  ~ %%%%%%%%%%%%%%
+%%%%%%%%%%%%%% ~ L_0 AND U_MAX  ~ %%%%%%%%%%%%%%
+U_max      = 2.148283155648865e+03;
+I_0        = [0; U_max/L_0];
+b          = 2400;
+a          = 240;
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% for i = 1:20
+%     L_0 = 0.1 * i;
+%     b   = 2400;
+%     a   = 240;
+%     while(true)
+%         c       = (a+b)/2;
+%         [~, Ia] = ode45(dI, [0; 0.01], [0; a/L_0], options);
+%         [~, Ic] = ode45(dI, [0; 0.01], [0; c/L_0], options);
+%         Ira      = 10-max(Ia(:,1));
+%         Irc      = 10-max(Ic(:,1));        
+%         if Ira*Irc > 0
+%             a = c;
+%         else
+%             b = c;
+%         end
+%         if abs((b-a)/2) < 0.5e-12 || b == a
+%             break
+%         end
+%     end
+%     results_ode(i, 2) = c;
+%     results_ode(i, 1) = L_0;
+% end
+% results_ode
+% plot(results_ode(:,1),results_ode(:,2))
+
+
+for i = 1:20
+    L_0 = 0.05 * i;
+    b   = 2400;
+    a   = 240;
+    while(true)
+        c       = (a+b)/2;
+        [~, Ia] = rk4(dI, [0; 0.01], N, [0; a/L_0]);
+        [~, Ic] = rk4(dI, [0; 0.01], N, [0; c/L_0]);
+        Ira      = 10-max(Ia(1,:));
+        Irc      = 10-max(Ic(1,:));        
+        if Ira*Irc > 0
+            a = c
+        else
+            b = c
+        end
+        if abs((b-a)/2) < 0.5e-9
+            break
+        end
+    end
+    results_rk4(i, 2) = c;
+    results_rk4(i, 1) = L_0;
+    results_rk4
+end
+plot(results_rk4(:,1),results_rk4(:,2))
+
+
 
 %%%%%%%%%%%%% ~ LOCAL FUNCTIONS ~ %%%%%%%%%%%%%%
 function [t,y] = rk4(f, tspan, N, y0 )
