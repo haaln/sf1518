@@ -1,0 +1,91 @@
+\documentclass[a4paper]{article}
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage[makeroom]{cancel}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\title{Mästarprovet 13: Strömkretsen}
+\author{Hassan Al Noori}
+\usepackage[margin=0.5in]{geometry}
+\begin{document}
+
+
+\begin{Huge}
+
+
+\begin{align*}
+L = \frac{L_{0}}{1+I^{2}}
+\end{align*} 
+
+\begin{align*}
+U = L\frac{dI}{dt}
+\end{align*} 
+
+
+\begin{align*}
+I = -C\frac{dU}{dt}
+\end{align*}
+
+\begin{align*}
+\frac{d^{2}I}{dt^{2}}= \frac{2I}{1+I^{2}}\left(\frac{dI}{dt}\right)^{2}-\frac{I(1+I^{2})}{L_{0}C}
+\end{align*}
+\begin{align*}\\
+t=0, \quad I=0, \quad \frac{dI}{dt}=\frac{U_{0}}{L_{0}}
+\end{align*}
+\begin{align*}\\
+\tilde{y}'(t) =
+\begin{bmatrix}
+y_{1}'(t) \\ 
+y_{2}'(t) \\
+\end{bmatrix}
+= \begin{bmatrix}
+y_{2}(t)\\
+\frac{2y_{1}(t)y_{2}^{2}(t)}{1+y_{1}(t)^2}-\frac{1+y_{1}(t)^{2}}{L_{0}C}\\
+\end{bmatrix}
+\end{align*}
+\end{Huge}
+
+\begin{equation*}
+\begin{aligned}
+\end{aligned}
+\end{equation*}
+\LARGE
+\begin{align*}
+E(t) & = U(t)^{2}-log(1+I(t)^{2})\\
+\frac{dE}{dt} & = \frac{d}{dt}\left(U(t)^{2}-log(1+I(t)^{2})\right)\\
+ & = \frac{d}{dt}\left(\left(\frac{L_{0}\frac{dI}{dt}}{1+I(t)^{2}})\right)^{2}-log\left(1+I(t)^{2}\right)\right) \\
+& = \frac{d}{dt}\left(\frac{L_{0}\frac{dI}{dt}}{1+I(t)^{2}}\right)^{2}-\frac{d}{dt}\left(log\left(1+I(t)^{2}\right)\right)\\
+& = ...\\
+& = 2\left({\frac{\frac{dI}{dt}\left(1+I(t)^{2}\left(\frac{d^{2}I}{dt^{2}}\right)-2I(t)\left(\frac{dI}{dt}\right)^{2}\right)}{\left(1+I(t)^{2}\right)^{3}}} -   {\frac{I(t)\left(\frac{dI}{dt}\right)}{\left(1+I(t)^{2}\right)}}\right)\\
+& = 2\left(\frac{\frac{dI}{dt}}{1+I(t)^{2}}\right)   \left({\frac{1+I(t)^{2}\left(\frac{d^{2}I}{dt^{2}}\right)-2I(t)\left(\frac{dI}{dt}\right)^{2}}{\left(1+I(t)^{2}\right)^{2}}} -   {\frac{I(t)}{1}}\right)\\
+\frac{dE}{dt} & = 0 \quad \forall \quad t \in \mathbb{R} \quad \Longleftrightarrow \frac{d}{dt}I(0) = 0 \quad or \quad I(0)= 0 \quad \because \\
+\frac{dE}{dt} &= 0 \Longrightarrow 
+{\frac{d^{2}I}{dt^{2}}}=\left(\frac{2I(t)\frac{dI}{dt}}{1+I(t)^{2}}+\frac{4\left(\frac{dI}{dt}\right)^{3}I(t)}{\left(1+I(t)^{2}\right)^{3}}\right)\frac{\left(1+I(t)^{2}\right)^{2}}{2\left(\frac{dI}{dt}\right)}
+\end{align*}\\
+Which by definition is a second order autonomous ODE. Thus, If $I=c$ is a specific solution, then its phase line is indenpendent of the time at which initial conditions are applied. Hence
+\begin{align*}
+\frac{d^{2}I}{dt^{2}}=0
+\end{align*}
+Since 
+\begin{align*}
+\frac{d^{2}I}{dt^{2}}=I(c)\ne\frac{dI}{dt}\quad and\quad I_{0}=0 \quad \therefore\quad\frac{dE}{dt}=0\\
+\square
+\end{align*}
+Which is given by the fact that the capacitor and magnetic field had been fully charged at $t=0$.
+
+\begin{align*}
+\end{align*}
+\begin{align*}
+& = 2\left(\cancelto{0}{\frac{\frac{dI}{dt}\left(1+I(t)^{2}\left(\frac{d^{2}I}{dt^{2}}\right)-2I(t)\left(\frac{dI}{dt}\right)^{2}\right)}{\left(1+I(t)^{2}\right)^{3}}} +   \cancelto{0}{\frac{I(t)\left(\frac{dI}{dt}\right)}{\left(1+I(t)^{2}\right)}}\right)
+\end{align*}
+
+
+
+
+
+
+
+\end{document}
+
