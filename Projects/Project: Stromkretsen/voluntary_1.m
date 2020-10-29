@@ -22,7 +22,7 @@ t_rk4      = [];
 t_ode      = [];
 I_ode      = [];
 I_ode_t    = [];
-U_max      = zeros(20,1);
+results    = zeros(20,1);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%% ~ System of first order ODE ~ %%%%%%%%
@@ -32,67 +32,39 @@ dI = @(t,y) [y(2); 2*y(1)/(1+y(1)^2)*y(2)^2-y(1)*((1+y(1)^2)/(L_0*C))];
 b = 2150;
 a = 2140;
 i = 1;
-% while(true)
-% %     computation of ODEs
-%     c = (a+b)/2;
-%     [~, Ia] = rk4(dI, t_period, N, [0; a]);
-%     [~, Ic] = rk4(dI, t_period, N, [0; c]);
-%     Ira = 10-max(Ia(1,:));
-%     Irc = 10-max(Ic(1,:));
-%     if Ira*Irc > 0
-%         a = c;
-%     else
-%         b = c;
-%     end
-%     U_max(i) = c
-%     if abs((b-a)/2) < 0.5e-12
-%         break
-%     end
-%     i = i + 1;
-% end
-% U_max = 2.148283155648865e+03;
-% [ta, Iu] = rk4(dI, [0 0.01], N, [0; U_max]);
-%     plot(ta,Iu(1,:))
-%     grid on
-%     title(sprintf('Current at U_0 = %0.i',U_0))
-%     xlabel('Time [seconds]')
-%     ylabel('Current [Ampere]')
-%     ylim([-13 13])
+while(true)
+%     computation of ODEs
+    c = (a+b)/2;
+    [~, Ia] = rk4(dI, t_period, N, [0; a]);
+    [~, Ic] = rk4(dI, t_period, N, [0; c]);
+    Ira = 10-max(Ia(1,:));
+    Irc = 10-max(Ic(1,:));
+    if Ira*Irc > 0
+        a = c;
+    else
+        b = c;
+    end
+    U_max(i) = c;
+    if abs((b-a)/2) < 0.5e-12
+        break
+    end
+    i = i + 1;
+end
+%plotting at I_max = 10
+[ta, Iu] = rk4(dI, [0 0.01], N, [0; U_max(end)]);
+plot(ta,Iu(1,:))
+grid on
+title(sprintf('Current at U_0 = %0.i',U_0))
+xlabel('Time [seconds]')
+ylabel('Current [Ampere]')
+ylim([-13 13])
 
-%%%%%%%%%%%%%% ~ L_0 AND U_MAX  ~ %%%%%%%%%%%%%%
-U_max      = 2.148283155648865e+03;
-I_0        = [0; U_max/L_0];
+%%%%%%%%%%%%%% ~ L_0 AND U_max  ~ %%%%%%%%%%%%%%
+% calculating the relationship between L_0 and U_max
 b          = 2400;
 a          = 240;
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% for i = 1:20
-%     L_0 = 0.1 * i;
-%     b   = 2400;
-%     a   = 240;
-%     while(true)
-%         c       = (a+b)/2;
-%         [~, Ia] = ode45(dI, [0; 0.01], [0; a/L_0], options);
-%         [~, Ic] = ode45(dI, [0; 0.01], [0; c/L_0], options);
-%         Ira      = 10-max(Ia(:,1));
-%         Irc      = 10-max(Ic(:,1));        
-%         if Ira*Irc > 0
-%             a = c;
-%         else
-%             b = c;
-%         end
-%         if abs((b-a)/2) < 0.5e-12 || b == a
-%             break
-%         end
-%     end
-%     results_ode(i, 2) = c;
-%     results_ode(i, 1) = L_0;
-% end
-% results_ode
-% plot(results_ode(:,1),results_ode(:,2))
-
-
 for i = 1:20
-    L_0 = 0.05 * i;
+    L_0 = 0.1 * i;
     b   = 2400;
     a   = 240;
     while(true)
@@ -102,20 +74,25 @@ for i = 1:20
         Ira      = 10-max(Ia(1,:));
         Irc      = 10-max(Ic(1,:));        
         if Ira*Irc > 0
-            a = c
+            a = c;
         else
-            b = c
+            b = c;
         end
         if abs((b-a)/2) < 0.5e-9
             break
         end
     end
-    results_rk4(i, 2) = c;
-    results_rk4(i, 1) = L_0;
-    results_rk4
+    results(i, 2) = c;
+    results(i, 1) = L_0;
 end
-plot(results_rk4(:,1),results_rk4(:,2))
 
+
+plot(results(:,1),results(:,2))
+title(sprintf('relationship between U*_0 and L_0 = %0.i',U_0))
+xlabel('L_0 [H]')
+ylabel('Power [Volt]')
+ylim([-13 13])
+grid on
 
 
 %%%%%%%%%%%%% ~ LOCAL FUNCTIONS ~ %%%%%%%%%%%%%%

@@ -43,14 +43,14 @@ for i = 1:length(U_0)
     plot(ax1,t_ode, I_ode(:,1), '-b', t_rk4, I_rk4(1,:), '-.r', t_ode, t_ode*0, 'k')
     grid on
     legend('ode45', 'rk4', 'Location','best')
-    title(sprintf('Current at U_0 = %0.i',U_0(i)))
+    title(sprintf('Current at U_0 = %0.i V',U_0(i)))
     xlabel('Time [seconds]')
     ylabel('Current [Ampere]')
     
     ax2 = nexttile([2 6]);
     plot(ax2, t_rk4, dEdt)
     ylabel('Energy [Wh]')
-    title(sprintf('E at U_0 = %0.i',U_0(i)))
+    title(sprintf('E at U_0 = %0.i V',U_0(i)))
     xlabel('Time [seconds]')
     axis manual
     axis(ax2, [0 0.1 0 0.01])
@@ -103,14 +103,14 @@ for i = 1:length(U_0)
     figure(i+3)   
     plot(t,I(:,1), '-.r',t,I_fourier_val,'b')
     legend('rk4','fourier')
-    title(sprintf('Fourier vs Runge U_0 = %0.i',U_0(i)))
+    title(sprintf('Fourier vs Runge U_0 = %0.i V',U_0(i)))
     xlabel('Time [seconds]')
     ylabel('Current [Ampere]')
     grid on
     figure(i+6)
     plot(t,I_fourier_val3,'m--',t,I_fourier_val,'b')
     legend('fourier with 3 a_k','fourier with 14 a_k')
-    title(sprintf('Fourier U_0 = %0.i',U_0(i)))
+    title(sprintf('Fourier U_0 = %0.i V',U_0(i)))
     xlabel('Time [seconds]')
     ylabel('Current [Ampere]')
     grid on
