@@ -17,6 +17,8 @@
 \usepackage{amsmath,amsfonts,amssymb}
 \usepackage[export]{adjustbox}
 
+\usepackage{paralist}
+
 \usefonttheme{serif}
 
 
@@ -27,7 +29,7 @@
   
 \begin{columns}[]
 \column{37em}
-\Large{\centerline{\usebeamercolor[fg]{title}Mästarprov 13: Strömkretsen}}
+\Large{\centerline{\usebeamercolor[fg]{title}SF1518/19 Mästarprov 13: Strömkretsen}}
 
 \vspace{0.1\textheight}
 
@@ -77,12 +79,12 @@
 \begin{columns}
 \column{37em}
 \begin{itemize}\itemsep1em
-  \item<1-> What is the current in the circuit?
-  \item<2-> How is the current affected by the voltage?
-  \item<3-> Prove $E(t)$ is constant
-  \item<4-> How big is the error?
-  \item<5-> Fourier transform
-  \item<6-> Voluntary part
+  \item<2-> What is the current in the circuit?
+  \item<3-> How is the current affected by the voltage?
+  \item<4-> Prove $E(t)$ is constant
+  \item<5-> How big is the error?
+  \item<6-> Fourier transform
+  \item<7-> Voluntary part
 \end{itemize}
 \end{columns}
 \end{frame}
@@ -248,18 +250,37 @@ Which by definition is a second order autonomous ODE. Thus, If $I=c$ is a specif
 \end{frame}
 %------------------------------------------------
 \begin{frame}
-\frametitle{Numerical Results}
-      \centerline{\hspace*{0cm}\includegraphics[scale=0.5]{figs/240V + E.pdf}}
+\frametitle{$U_{0}= 240V$}
+\begin{columns}
+	\column{0.65\textwidth}
+		\begin{figure}		
+			\includegraphics[scale=0.25]{figs/240V + E.png}
+      	\end{figure}
+	\column{0.55\textwidth}
+      	
+\end{columns}    
 \end{frame}
 %------------------------------------------------
 \begin{frame}
-	\frametitle{Numerical Results}
-		\centerline{\vspace*{1cm}\includegraphics[scale=0.5]{figs/1200V + E.pdf}}
+\frametitle{$U_{0}= 1200V$}
+\begin{columns}
+		\column{0.65\textwidth}
+		\begin{figure}		
+			\includegraphics[scale=0.25]{figs/1200V + E.png}
+      	\end{figure}
+		\column{0.55\textwidth}	
+\end{columns} 
 \end{frame}
 %------------------------------------------------
 \begin{frame}
-\frametitle{Numerical Results}
-		\centering{\vspace*{1cm}\includegraphics[scale=0.5]{figs/2400V + E.pdf}}
+\frametitle{$U_{0}= 2400V$}
+\begin{columns}
+		\column{0.65\textwidth}
+		\begin{figure}		
+			\includegraphics[scale=0.25]{figs/2400V + E.png}
+      	\end{figure}
+		\column{0.55\textwidth}	
+\end{columns} 
 \end{frame}
 %------------------------------------------------
 \begin{frame}
@@ -279,19 +300,12 @@ a_{k} = \frac{2}{T}\int_{0}^{T} I(t)sin(k\omega t)dt,\quad k=1,2,3....
 \begin{columns}
 \column{37em}
 \begin{itemize}
-	\item<1-> Trapezoidal integration for periodic functions
-\end{itemize}
-
-\end{columns}
-\end{frame}
-%------------------------------------------------
-\begin{frame}
-\frametitle{Fourier analysis}
-\begin{columns}
-\column{37em}
-\begin{itemize}
 	\item<1-> Trapezoidal integration for periodic functions\\
-	 \begin{align*}I = T(h)-\frac{f'(b)-f'(a)}{12}h^2+\frac{f'''(b)-f'''(a)}{720}h^4-\frac{f^{(5)}(b)-f^{(5)}(a)}{30240}h^6+O(h^8)
+ 	 \begin{align*}
+	 	 T(h)& = \frac{h}{2}\left(f_{0}+f_{m}+  2\sum_{m-1}^{i=1} y_{i}\right)
+ 	 \end{align*} 
+	 \begin{align*}
+	 I &= T(h)-\frac{f'(b)-f'(a)}{12}h^2+\frac{f'''(b)-f'''(a)}{720}h^4-\frac{f^{(5)}(b)-f^{(5)}(a)}{30240}h^6+O(h^8)
 			\end{align*}
 \end{itemize}
 
@@ -303,11 +317,11 @@ a_{k} = \frac{2}{T}\int_{0}^{T} I(t)sin(k\omega t)dt,\quad k=1,2,3....
 	\begin{columns}
 		\column{0.55\textwidth}
 			\begin{figure}
-				\includegraphics[scale=0.4]{figs/fourier vs rk4 240.pdf}
+				\includegraphics[scale=0.25]{figs/fourier vs rk4 240.png}
 			\end{figure}
-		\column{0.65\textwidth}
+		\column{0.55\textwidth}
 			\begin{figure}
-				\includegraphics[scale=0.4]{figs/fourier comparison 240.pdf}
+				\includegraphics[scale=0.25]{figs/fourier comparison 240.png}
 			\end{figure}
 	\end{columns}
 \end{frame}
@@ -317,11 +331,11 @@ a_{k} = \frac{2}{T}\int_{0}^{T} I(t)sin(k\omega t)dt,\quad k=1,2,3....
 	\begin{columns}
 		\column{0.55\textwidth}
 			\begin{figure}
-				\includegraphics[scale=0.4]{figs/fourier vs rk4 1200.pdf}
+				\includegraphics[scale=0.25]{figs/fourier vs rk4 1200.png}
 			\end{figure}
-		\column{0.65\textwidth}
+		\column{0.55\textwidth}
 			\begin{figure}
-				\includegraphics[scale=0.4]{figs/fourier comparison 1200.pdf}
+				\includegraphics[scale=0.25]{figs/fourier comparison 1200.png}
 			\end{figure}
 	\end{columns}
 \end{frame}
@@ -331,11 +345,11 @@ a_{k} = \frac{2}{T}\int_{0}^{T} I(t)sin(k\omega t)dt,\quad k=1,2,3....
 	\begin{columns}
 		\column{0.55\textwidth}
 			\begin{figure}
-				\includegraphics[scale=0.4]{figs/fourier vs rk4 2400.pdf}
+				\includegraphics[scale=0.25]{figs/fourier vs rk4 2400.png}
 			\end{figure}
-		\column{0.65\textwidth}
+		\column{0.55\textwidth}
 			\begin{figure}
-				\includegraphics[scale=0.4]{figs/fourier comparison 2400.pdf}
+				\includegraphics[scale=0.25]{figs/fourier comparison 2400.png}
 			\end{figure}
 	\end{columns}
 \end{frame}
@@ -379,13 +393,13 @@ a_{k} = \frac{2}{T}\int_{0}^{T} I(t)sin(k\omega t)dt,\quad k=1,2,3....
 \begin{frame}
 \frametitle{Voluntary part 1}
 	\begin{columns}
-		\column{0.55\textwidth}
+		\column{0.6\textwidth}
 			\begin{figure}
-				\includegraphics[scale=0.4]{figs/voluntary_1_Umax.pdf}
+				\includegraphics[scale=0.25]{figs/voluntary_1_Umax.png}
 			\end{figure}
-		\column{0.65\textwidth}
+		\column{0.6\textwidth}
 			\begin{figure}
-				\includegraphics[scale=0.4]{figs/voluntary_1_r.pdf}
+				\includegraphics[scale=0.25]{figs/voluntary_1_r.png}
 			\end{figure}
 	\end{columns}
 \end{frame}
@@ -427,7 +441,7 @@ L = \frac{L_{0}}{1+I^{2}}
 	\begin{columns}
 		\column{1\textwidth}
 			\begin{figure}
-				\includegraphics[scale=0.7]{figs/voluntary_2_240V.pdf}
+				\includegraphics[scale=0.27]{figs/voluntary_2_240V.png}
 			\end{figure}
 	\end{columns}
 \end{frame}
@@ -437,7 +451,7 @@ L = \frac{L_{0}}{1+I^{2}}
 	\begin{columns}
 		\column{1\textwidth}
 			\begin{figure}
-				\includegraphics[scale=0.7]{figs/voluntary_2_1200.pdf}
+				\includegraphics[scale=0.27]{figs/voluntary_2_1200.png}
 			\end{figure}
 	\end{columns}
 \end{frame}
@@ -447,7 +461,7 @@ L = \frac{L_{0}}{1+I^{2}}
 	\begin{columns}
 		\column{1\textwidth}
 			\begin{figure}
-				\includegraphics[scale=0.7]{figs/voluntary_2_2400V.pdf}
+				\includegraphics[scale=0.27]{figs/voluntary_2_2400V.png}
 			\end{figure}
 	\end{columns}
 \end{frame}
