@@ -50,22 +50,22 @@ i = 1;
 %     end
 %     i = i + 1;
 % end
-%plotting at I_max = 10
-U_max = 2.148283155648865e+03;
-[ta, Iu] = rk4(dI, [0 0.01], N, [0; U_max(end)]);
-plot(ta,Iu(1,:))
-grid on
-title(sprintf('Current at U_0 = %0.f V',U_max(end)))
-xlabel('Time [seconds]')
-ylabel('Current [Ampere]')
-ylim([-13 13])
+% %plotting at I_max = 10
+% U_max = 2.148283155648865e+03;
+% [ta, Iu] = rk4(dI, [0 0.01], N, [0; U_max(end)]);
+% plot(ta,Iu(1,:))
+% grid on
+% title(sprintf('Current at U_0 = %0.f V',U_max(end)))
+% xlabel('Time [seconds]')
+% ylabel('Current [Ampere]')
+% ylim([-13 13])
 
 %%%%%%%%%%%%%% ~ L_0 AND U_max  ~ %%%%%%%%%%%%%%
 % calculating the relationship between L_0 and U_max
 b          = 2400;
 a          = 240;
 for i = 1:20
-    L_0 = 0.1 * i;
+    L_0 = 0.05 * i;
     b   = 2400;
     a   = 240;
     while(true)
@@ -79,7 +79,7 @@ for i = 1:20
         else
             b = c;
         end
-        if abs((b-a)/2) < 0.5e-9
+        if abs((b-a)/2) < 0.5e-6
             break
         end
     end

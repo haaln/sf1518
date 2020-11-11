@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.9.23)  2 NOV 2020 11:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.10.28)  11 NOV 2020 12:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1023,12 +1023,12 @@ LaTeX Info: Redefining \selectfont on input line 25.
 
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerpatchparalist.sty)
 (./presentation.nav)
-LaTeX Font Info:    Trying to load font information for U+msa on input line 40.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 41.
 
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 40.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 41.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -1039,14 +1039,14 @@ gs/KTH-profil-linjer.pdf>]
 <figs/Stromkrets.png, id=34, 620.3175pt x 453.695pt>
 File: figs/Stromkrets.png Graphic file (type png)
 <use figs/Stromkrets.png>
-Package pdftex.def Info: figs/Stromkrets.png  used on input line 59.
+Package pdftex.def Info: figs/Stromkrets.png  used on input line 60.
 (pdftex.def)             Requested size: 227.62204pt x 166.47995pt.
  [2
 
  <./figs/KTH-logo.pdf> <./figs/KTH-platta.pdf> <./figs/Stromkrets.png>]
 File: figs/Stromkrets.png Graphic file (type png)
 <use figs/Stromkrets.png>
-Package pdftex.def Info: figs/Stromkrets.png  used on input line 59.
+Package pdftex.def Info: figs/Stromkrets.png  used on input line 60.
 (pdftex.def)             Requested size: 227.62204pt x 166.47995pt.
  [3
 
@@ -1054,7 +1054,7 @@ Package pdftex.def Info: figs/Stromkrets.png  used on input line 59.
 <figs/rfid.png, id=53, 331.2375pt x 195.73125pt>
 File: figs/rfid.png Graphic file (type png)
 <use figs/rfid.png>
-Package pdftex.def Info: figs/rfid.png  used on input line 67.
+Package pdftex.def Info: figs/rfid.png  used on input line 68.
 (pdftex.def)             Requested size: 142.26378pt x 84.06422pt.
  [4
 
@@ -1062,7 +1062,7 @@ Package pdftex.def Info: figs/rfid.png  used on input line 67.
 <figs/barcode.png, id=60, 642.4pt x 501.875pt>
 File: figs/barcode.png Graphic file (type png)
 <use figs/barcode.png>
-Package pdftex.def Info: figs/barcode.png  used on input line 75.
+Package pdftex.def Info: figs/barcode.png  used on input line 76.
 (pdftex.def)             Requested size: 113.81102pt x 88.90921pt.
  [5
 
@@ -1088,7 +1088,7 @@ Package pdftex.def Info: figs/barcode.png  used on input line 75.
 ] [15
 
 ]
-Overfull \hbox (266.08047pt too wide) detected at line 154
+Overfull \hbox (266.08047pt too wide) detected at line 155
 []
  []
 
@@ -1107,7 +1107,7 @@ Overfull \hbox (266.08047pt too wide) detected at line 154
 ] [22
 
 ]
-Overfull \hbox (6.43039pt too wide) detected at line 232
+Overfull \hbox (6.43039pt too wide) detected at line 233
 []
  []
 
@@ -1119,7 +1119,7 @@ Overfull \hbox (6.43039pt too wide) detected at line 232
 <figs/240V + E.png, id=174, 913.4125pt x 735.74875pt>
 File: figs/240V + E.png Graphic file (type png)
 <use figs/240V + E.png>
-Package pdftex.def Info: figs/240V + E.png  used on input line 284.
+Package pdftex.def Info: figs/240V + E.png  used on input line 285.
 (pdftex.def)             Requested size: 228.35257pt x 183.93674pt.
  [25
 
@@ -1127,7 +1127,7 @@ Package pdftex.def Info: figs/240V + E.png  used on input line 284.
 <figs/1200V + E.png, id=182, 871.255pt x 737.75626pt>
 File: figs/1200V + E.png Graphic file (type png)
 <use figs/1200V + E.png>
-Package pdftex.def Info: figs/1200V + E.png  used on input line 317.
+Package pdftex.def Info: figs/1200V + E.png  used on input line 318.
 (pdftex.def)             Requested size: 217.81322pt x 184.43861pt.
  [26
 
@@ -1135,7 +1135,7 @@ Package pdftex.def Info: figs/1200V + E.png  used on input line 317.
 <figs/2400V + E.png, id=189, 875.27pt x 703.62875pt>
 File: figs/2400V + E.png Graphic file (type png)
 <use figs/2400V + E.png>
-Package pdftex.def Info: figs/2400V + E.png  used on input line 350.
+Package pdftex.def Info: figs/2400V + E.png  used on input line 351.
 (pdftex.def)             Requested size: 218.81696pt x 175.90675pt.
  [27
 
@@ -1147,10 +1147,10 @@ Package pdftex.def Info: figs/2400V + E.png  used on input line 350.
 <figs/fourier vs rk4 240.png, id=207, 899.36pt x 693.59125pt>
 File: figs/fourier vs rk4 240.png Graphic file (type png)
 <use figs/fourier vs rk4 240.png>
-Package pdftex.def Info: figs/fourier vs rk4 240.png  used on input line 393.
+Package pdftex.def Info: figs/fourier vs rk4 240.png  used on input line 394.
 (pdftex.def)             Requested size: 224.83945pt x 173.39738pt.
 
-Overfull \hbox (21.40112pt too wide) in paragraph at lines 393--393
+Overfull \hbox (21.40112pt too wide) in paragraph at lines 394--394
  [] 
  []
 
@@ -1158,10 +1158,10 @@ Overfull \hbox (21.40112pt too wide) in paragraph at lines 393--393
 File: figs/fourier comparison 240.png Graphic file (type png)
 <use figs/fourier comparison 240.png>
 Package pdftex.def Info: figs/fourier comparison 240.png  used on input line 39
-3.
+4.
 (pdftex.def)             Requested size: 223.58476pt x 172.89551pt.
 
-Overfull \hbox (20.14644pt too wide) in paragraph at lines 393--393
+Overfull \hbox (20.14644pt too wide) in paragraph at lines 394--394
  [] 
  []
 
@@ -1171,10 +1171,10 @@ Overfull \hbox (20.14644pt too wide) in paragraph at lines 393--393
 <figs/fourier vs rk4 1200.png, id=216, 881.2925pt x 692.5875pt>
 File: figs/fourier vs rk4 1200.png Graphic file (type png)
 <use figs/fourier vs rk4 1200.png>
-Package pdftex.def Info: figs/fourier vs rk4 1200.png  used on input line 407.
+Package pdftex.def Info: figs/fourier vs rk4 1200.png  used on input line 408.
 (pdftex.def)             Requested size: 220.32259pt x 173.14644pt.
 
-Overfull \hbox (16.88426pt too wide) in paragraph at lines 407--407
+Overfull \hbox (16.88426pt too wide) in paragraph at lines 408--408
  [] 
  []
 
@@ -1182,10 +1182,10 @@ Overfull \hbox (16.88426pt too wide) in paragraph at lines 407--407
 File: figs/fourier comparison 1200.png Graphic file (type png)
 <use figs/fourier comparison 1200.png>
 Package pdftex.def Info: figs/fourier comparison 1200.png  used on input line 4
-07.
+08.
 (pdftex.def)             Requested size: 217.0604pt x 172.89551pt.
 
-Overfull \hbox (13.62207pt too wide) in paragraph at lines 407--407
+Overfull \hbox (13.62207pt too wide) in paragraph at lines 408--408
  [] 
  []
 
@@ -1195,10 +1195,10 @@ Overfull \hbox (13.62207pt too wide) in paragraph at lines 407--407
 <figs/fourier vs rk4 2400.png, id=226, 873.2625pt x 694.595pt>
 File: figs/fourier vs rk4 2400.png Graphic file (type png)
 <use figs/fourier vs rk4 2400.png>
-Package pdftex.def Info: figs/fourier vs rk4 2400.png  used on input line 421.
+Package pdftex.def Info: figs/fourier vs rk4 2400.png  used on input line 422.
 (pdftex.def)             Requested size: 218.31508pt x 173.64832pt.
 
-Overfull \hbox (14.87675pt too wide) in paragraph at lines 421--421
+Overfull \hbox (14.87675pt too wide) in paragraph at lines 422--422
  [] 
  []
 
@@ -1206,10 +1206,10 @@ Overfull \hbox (14.87675pt too wide) in paragraph at lines 421--421
 File: figs/fourier comparison 2400.png Graphic file (type png)
 <use figs/fourier comparison 2400.png>
 Package pdftex.def Info: figs/fourier comparison 2400.png  used on input line 4
-21.
+22.
 (pdftex.def)             Requested size: 217.56227pt x 173.39738pt.
 
-Overfull \hbox (14.12395pt too wide) in paragraph at lines 421--421
+Overfull \hbox (14.12395pt too wide) in paragraph at lines 422--422
  [] 
  []
 
@@ -1228,12 +1228,12 @@ Overfull \hbox (14.12395pt too wide) in paragraph at lines 421--421
 <figs/voluntary_1_Umax.png, id=255, 872.25874pt x 692.5875pt>
 File: figs/voluntary_1_Umax.png Graphic file (type png)
 <use figs/voluntary_1_Umax.png>
-Package pdftex.def Info: figs/voluntary_1_Umax.png  used on input line 475.
+Package pdftex.def Info: figs/voluntary_1_Umax.png  used on input line 476.
 (pdftex.def)             Requested size: 218.06415pt x 173.14644pt.
 <figs/voluntary_1_r.png, id=256, 882.29625pt x 700.6175pt>
 File: figs/voluntary_1_r.png Graphic file (type png)
 <use figs/voluntary_1_r.png>
-Package pdftex.def Info: figs/voluntary_1_r.png  used on input line 475.
+Package pdftex.def Info: figs/voluntary_1_r.png  used on input line 476.
 (pdftex.def)             Requested size: 220.57352pt x 175.15395pt.
  [37
 
@@ -1245,7 +1245,7 @@ Package pdftex.def Info: figs/voluntary_1_r.png  used on input line 475.
 <figs/voluntary_2_240V.png, id=275, 871.255pt x 680.5425pt>
 File: figs/voluntary_2_240V.png Graphic file (type png)
 <use figs/voluntary_2_240V.png>
-Package pdftex.def Info: figs/voluntary_2_240V.png  used on input line 517.
+Package pdftex.def Info: figs/voluntary_2_240V.png  used on input line 518.
 (pdftex.def)             Requested size: 235.24199pt x 183.74893pt.
  [40
 
@@ -1253,7 +1253,7 @@ Package pdftex.def Info: figs/voluntary_2_240V.png  used on input line 517.
 <figs/voluntary_2_1200.png, id=282, 879.285pt x 682.55pt>
 File: figs/voluntary_2_1200.png Graphic file (type png)
 <use figs/voluntary_2_1200.png>
-Package pdftex.def Info: figs/voluntary_2_1200.png  used on input line 527.
+Package pdftex.def Info: figs/voluntary_2_1200.png  used on input line 528.
 (pdftex.def)             Requested size: 237.41013pt x 184.29095pt.
  [41
 
@@ -1261,7 +1261,7 @@ Package pdftex.def Info: figs/voluntary_2_1200.png  used on input line 527.
 <figs/voluntary_2_2400V.png, id=289, 882.29625pt x 684.5575pt>
 File: figs/voluntary_2_2400V.png Graphic file (type png)
 <use figs/voluntary_2_2400V.png>
-Package pdftex.def Info: figs/voluntary_2_2400V.png  used on input line 537.
+Package pdftex.def Info: figs/voluntary_2_2400V.png  used on input line 538.
 (pdftex.def)             Requested size: 238.22318pt x 184.833pt.
  [42
 
@@ -1277,17 +1277,17 @@ Package pdftex.def Info: figs/voluntary_2_2400V.png  used on input line 537.
 \tf@snm=\write8
 \openout8 = `presentation.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 549.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 549.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 550.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 550.
  (./presentation.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 549.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 549.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 550.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 550.
 Package rerunfilecheck Info: File `presentation.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
  23184 strings out of 483140
- 452921 string characters out of 5965151
+ 452921 string characters out of 5965150
  797273 words of memory out of 5000000
  37532 multiletter control sequences out of 15000+600000
  547335 words of font info for 84 fonts, out of 8000000 for 9000
@@ -1307,7 +1307,7 @@ m/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/s
 hare/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/sh
 are/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on presentation.pdf (43 pages, 937875 bytes).
+Output written on presentation.pdf (43 pages, 937908 bytes).
 PDF statistics:
  374 PDF objects out of 1000 (max. 8388607)
  264 compressed objects within 3 object streams
