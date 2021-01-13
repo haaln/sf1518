@@ -19,7 +19,6 @@ function E = total_consumption(DISTANCE, ROUTE, N)
 %
 %  See also CONSUMPTION, VELOCITY, TIME_TO_DESTINATION, 
 
-%  Hassan Al N 5-9-20
 
 %checks inputs and returns if it's not an integer
     if nargin == 3
