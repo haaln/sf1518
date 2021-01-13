@@ -24,7 +24,6 @@ function [CONSUMPTION] = consumption(VELOCITY)
 %
 %  See also VELOCITY, TIME_TO_DESTINATION, TOTAL_CONSUMPTION
 
-%  Hassan Al N 5-9-20
 
 %tries to load roadster returns error if it cant find it
 try load roadster.mat speed_kmph consumption_Whpkm
