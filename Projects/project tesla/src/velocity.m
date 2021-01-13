@@ -19,7 +19,6 @@ function VELOCITY = velocity(DISTANCE,ROUTE)
 %
 %  See also CONSUMPTION, TIME_TO_DESTINATION, TOTAL_CONSUMPTION
 
-%  Hassan Al N 5-9-20
 
 %checks for allowed input and correct amount of input
 if nargin ~= 2 || ~isnumeric(DISTANCE) || nargin > 2
