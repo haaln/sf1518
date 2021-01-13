@@ -22,7 +22,6 @@ function ETA = time_to_destination(DISTANCE, ROUTE, N)
 %
 % See also CONSUMPTION, VELOCITY, TOTAL_CONSUMPTION
 
-%  Hassan Al N 5-9-20
 
 %checks allowed input and amount of input
     if nargin == 3
