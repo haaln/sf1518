@@ -27,8 +27,6 @@ function EXPECTED_DISTANCE = distance(T, ROUTE)
 %
 %  See also REACH
 
-% Hassan Al N 18-9-20
-
 %check input arguments and load ROUTE
 if nargin ~= 2 || ~isnumeric(T) || nargin > 2
     error('Usage: distance distance(T,route)')
